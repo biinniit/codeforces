@@ -12,30 +12,17 @@ public class P1985E {
 
       Arrays.sort(B);
 
-      Long minDiff = Long.MAX_VALUE;
-      long[] S = {1, 1, k};
-      for (int i = 1; i <= B[0]; ++i) {
-        if (k % i == 0) {
-          for (int j = i; j <= B[1]; ++j) {
-            if ((k / i) % j == 0) {
-              long third = k / (i * j);
-              if (third - i < minDiff) {
-                minDiff = third - i;
-                S[0] = i;
-                S[1] = j;
-                S[2] = third;
-              }
-            }
+      long maxLocations = 0;
+      for (int i = 1; i <= B[0]; ++i)
+        for (int j = i; j <= B[1]; ++j)
+          if (k % (i * j) == 0 && k / i / j <= B[2]) {
+            long third = k / i / j;
+            long locations = (B[0] - i + 1) * (B[1] - j + 1) * (B[2] - third + 1);
+            if (locations > maxLocations) 
+              maxLocations = locations;
           }
-        }
-      }
 
-      Arrays.sort(S);
-
-      if (S[2] <= B[2])
-        System.out.println((B[0] - S[0] + 1) * (B[1] - S[1] + 1) * (B[2] - S[2] + 1));
-      else
-        System.out.println(0);
+      System.out.println(maxLocations);
     }
   }
 
