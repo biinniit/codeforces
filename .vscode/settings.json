@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "autoimport.doubleQuotes": false,
+  "editor.rulers": [110],
+  "editor.tabSize": 2,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.maxTokenizationLineLength": 2500
+  }
+}
